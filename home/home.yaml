@@ -1,0 +1,35 @@
+# homepage-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: homepage
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: homepage
+  template:
+    metadata:
+      labels:
+        app: homepage
+    spec:
+      containers:
+      - name: homepage
+        image: ECR-URI
+        ports:
+        - containerPort: 80
+        
+---
+
+# homepage-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: homepage
+spec:
+  selector:
+    app: homepage
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

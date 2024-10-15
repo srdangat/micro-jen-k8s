@@ -1,0 +1,35 @@
+# laptoppage-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: laptoppage
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: laptoppage
+  template:
+    metadata:
+      labels:
+        app: laptoppage
+    spec:
+      containers:
+      - name: laptoppage
+        image: ECR-URI
+        ports:
+        - containerPort: 80
+
+---
+
+# laptoppage-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: laptoppage
+spec:
+  selector:
+    app: laptoppage
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

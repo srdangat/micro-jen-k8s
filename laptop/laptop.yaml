@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: laptoppage
-        image: ECR-URI
+        image: 324761312512.dkr.ecr.us-east-1.amazonaws.com/laptoppage:latest
         ports:
         - containerPort: 80
 
